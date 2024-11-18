@@ -1,0 +1,76 @@
+package Rectange;
+
+import java.util.Scanner;
+
+public class Rectange {
+    // Attributes
+    private double length = 1.0; // Default value
+    private double width = 1.0;  // Default value
+
+    // Getter and Setter for Length
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        if (length > 0.0 && length < 20.0) {
+            this.length = length;
+        } else {
+            throw new IllegalArgumentException("Length must be greater than 0.0 and less than 20.0.");
+        }
+    }
+
+    // Getter and Setter for Width
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if (width > 0.0 && width < 20.0) {
+            this.width = width;
+        } else {
+            throw new IllegalArgumentException("Width must be greater than 0.0 and less than 20.0.");
+        }
+    }
+
+    // Method to calculate Area
+    public double calculateArea() {
+        return length * width;
+    }
+
+    // Method to calculate Perimeter
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+
+    // Main Method
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create a Rectangle Object
+        Rectange rectangle = new Rectange();
+
+        try {
+            // Input and Set Length
+            System.out.print("Enter the length of the rectangle (between 0.0 and 20.0): ");
+            double length = scanner.nextDouble();
+            rectangle.setLength(length);
+
+            // Input and Set Width
+            System.out.print("Enter the width of the rectangle (between 0.0 and 20.0): ");
+            double width = scanner.nextDouble();
+            rectangle.setWidth(width);
+
+            // Display Results
+            System.out.println("\nRectangle Details:");
+            System.out.printf("Length: %.2f%n", rectangle.getLength());
+            System.out.printf("Width: %.2f%n", rectangle.getWidth());
+            System.out.printf("Area: %.2f%n", rectangle.calculateArea());
+            System.out.printf("Perimeter: %.2f%n", rectangle.calculatePerimeter());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
